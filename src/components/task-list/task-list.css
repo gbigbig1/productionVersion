@@ -1,0 +1,45 @@
+.tasks__list {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.tasks__list__username {
+    width: 100%;
+}
+
+.tasks__list__input {
+    width: 80%;
+    margin-right: 7px;
+    border: 1px solid #b9b7b7;
+    border-radius: 2px;
+}
+.error {
+    border: 1px solid #ff0000;
+}
+.tasks__list__newTask {
+    margin-top: 10px;
+}
+
+.tasks__list__infoLabel {
+    color: #16ca19;
+}
+
+.table {
+    display:table;
+    border-collapse:collapse;
+}
+.tr {
+    display:table-row;
+    border-bottom: 1px solid lightgray;
+
+}
+.th {
+    display:table-cell;
+    font-weight: 700;
+    padding: 5px 0;
+}
+.td {
+    display:table-cell;
+    padding: 5px 0;
+}

@@ -1,0 +1,27 @@
+.footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.footer__filter {
+
+}
+
+.footer__filter__btn {
+    background: none;
+    border: 1px solid #808080;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #b8b8bf;
+}
+
+.footer__filter__btn:hover {
+    background-color: #f1eeee;
+}
+.footer__filter__btn:focus {
+    outline:0;
+}

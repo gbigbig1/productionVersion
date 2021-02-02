@@ -1,0 +1,10 @@
+.tasks__new-task {
+    text-align: right;
+}
+
+
+.tasks__new-task__icon {
+    font-weight: bold;
+    font-size: 14pt;
+}
+

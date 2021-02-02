@@ -1,0 +1,25 @@
+.tasks__content {
+    padding: 0 20px 20px 20px;
+}
+
+.tasks__authorization {
+    margin-bottom: 5px;
+}
+
+.tasks__pagination {
+    text-align: center;
+}
+
+.task_pages_item {
+    margin-right: 5px;
+}
+.task_pages_item:last-child {
+    margin-right: 0;
+}
+.task_pages_item:hover {
+    cursor: pointer !important;
+    text-decoration: underline;
+}
+
+
+

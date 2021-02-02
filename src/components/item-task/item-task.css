@@ -1,0 +1,16 @@
+.text {
+
+}
+
+.completed {
+    color: rgba(0, 0, 0, 0.2);
+    cursor: default;
+    text-decoration: line-through
+}
+.save-icon {
+    width: 22px;
+}
+.edit-icon {
+    width: 22px;
+}
+

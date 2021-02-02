@@ -1,0 +1,35 @@
+.tasks__pagination__content {
+    margin: 0 10px;
+}
+
+.tasks_pagination_item {
+    margin-left: 5px;
+}
+
+.tasks_pagination_item:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000fc;
+}
+
+.selectedPage {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.tasks__pagination__btn {
+    background: none;
+    border: none;
+    margin-left: 5px;
+}
+
+.tasks__pagination__btn:focus {
+    outline:0;
+}
+.tasks__pagination__btn:hover {
+    cursor: pointer;
+}
+
+.tasks__pagination__btn img {
+    width: 12px;
+}
