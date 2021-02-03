@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './task-list.css';
  
 import FormAddNewTask from './FormAddNewTask';
-import ItemTask from "../item-task/item-task";
+import TaskItem from "../item-task/task-item";
 
 const TaskList = ({tasks, addTask, errorData, saveEditTask, isAuth, state,
                       changeAddTaskMode, handlerInputChange, handlerEditMode}) => (
@@ -18,16 +18,16 @@ const TaskList = ({tasks, addTask, errorData, saveEditTask, isAuth, state,
             {isAuth && <div className='th'>{'Действия'}</div>}
         </div>
         {tasks.map( ({id, username, text, email, status} ) => (
-                <ItemTask  id={id}
-                           username={username}
-                           text={text}
-                           email={email}
-                           status={status}
-                           isAuth={isAuth}
-                           saveEditTask={saveEditTask}
-                           state={state}
-                           handlerInputChange={handlerInputChange}
-                           handlerEditMode={handlerEditMode}
+                <TaskItem id={id}
+                          username={username}
+                          text={text}
+                          email={email}
+                          status={status}
+                          isAuth={isAuth}
+                          saveEditTask={saveEditTask}
+                          state={state}
+                          handlerInputChange={handlerInputChange}
+                          handlerEditMode={handlerEditMode}
                 />
             )
         )}

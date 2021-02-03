@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import iconEdit from '../../assets/images/edit_icon.png'
 import iconSave from '../../assets/images/save_icon.png'
 
-import './item-task.css'
+import './task-item.css'
 
 
-const ItemTask = ({ id, username, text, email, status, isAuth, saveEditTask, state, handlerInputChange, handlerEditMode }) => (
+const TaskItem = ({ id, username, text, email, status, isAuth, saveEditTask, state, handlerInputChange, handlerEditMode }) => (
 
     <div className={ status ? 'completed text tr' : 'text tr'}>
         {/*<div className='td'>{id}</div>*/}
@@ -60,7 +60,7 @@ const ItemTask = ({ id, username, text, email, status, isAuth, saveEditTask, sta
     </div>
 );
 
-ItemTask.propTypes = {
+TaskItem.propTypes = {
     id: PropTypes.number,
     username: PropTypes.string,
     email: PropTypes.string,
@@ -73,7 +73,7 @@ ItemTask.propTypes = {
 
 }
 
-ItemTask.defaultProps = {
+TaskItem.defaultProps = {
     id: '',
     username: '',
     email: '',
@@ -85,4 +85,4 @@ ItemTask.defaultProps = {
     handlerEditMode: () => {},
 }
 
-export default ItemTask;
+export default TaskItem;

@@ -4,13 +4,13 @@ import React, { Fragment } from 'react';
 import './App.css';
 
 import Title from './components/title/title'
-import Task from "./containers/task/task";
+import TaskContainer from "./components/task/task-container";
 
 const App = () => (
   <Fragment>
       <div className='tasks'>
           <Title title='Список задач'/>
-          <Task />
+          <TaskContainer />
       </div>
   </Fragment>
 );

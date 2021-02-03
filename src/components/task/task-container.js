@@ -1,11 +1,6 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
 
-import Login from "../../components/login/login";
-import TaskList from '../../components/task-list/task-list';
-import Footer from '../../components/footer/footer';
-import Pagination from "../../components/pagination/pagination";
-
 import {
     changeFilter,
     getTasksThunkCreator,
@@ -13,10 +8,10 @@ import {
     loginThunkCreator,
     saveEditTaskThunkCreator
 } from "../../actions/actionCreator";
+import Task from "./task";
 
-import './task.css'
 
-class Task extends Component {
+class TaskContainer extends Component {
 
     state = {
         isEditMode: false,
@@ -84,7 +79,7 @@ class Task extends Component {
 
     addTask = (event) => {
         event.preventDefault();
-        let lastPageNumber = (Math.floor(this.props.totalTaskCount / this.props.pageSize))+1
+        let lastPageNumber = (Math.floor(this.props.totalTaskCount / this.props.pageSize)) + 1
         this.props.addNewTaskThunkCreator(this.state.usernameInp, this.state.emailInp, this.state.textTaskInp, lastPageNumber)
     }
 
@@ -118,47 +113,21 @@ class Task extends Component {
     }
 
     render() {
-        const { tasks, totalTaskCount, pageSize, filterReducer, changeFilter, isAuth} = this.props;
-        const isTasksExist = tasks && tasks.length > 0;
-        const filteredTasks = this.filterTasks(tasks, filterReducer);
-
         return (
-            <div className='tasks__content'>
-                <Login
-                    isAuth={isAuth}
-                    login={this.props.login}
-                    onClickFormLoginBtn={this.onClickFormLoginBtn}
-                    onClickLoginBtn={this.onClickLoginBtn}
-                    loginInput={this.state.loginInput}
-                    pasInput={this.state.pasInput}
-                    handlerInputChange={this.handlerInputChange}
-                    errorLogin={this.props.errorLogin}
-                />
-                {isTasksExist && <TaskList
-                    tasks={filteredTasks}
-                    addTask={this.addTask}
-                    saveEditTask={this.saveEditTask}
-                    isAuth={isAuth}
-                    state={this.state}
-                    changeAddTaskMode={this.changeAddTaskMode}
-                    handlerInputChange={this.handlerInputChange}
-                    handlerEditMode={this.handlerEditMode}
-                    errorData={this.props.errorData}
-                />}
-
-                <Pagination
-                    totalTaskCount={totalTaskCount}
-                    pageSize={pageSize}
-                    currentPage={this.props.currentPage}
-                    onPageChange={this.onPageChange}
-                />
-                <Footer
-                    amount={totalTaskCount}
-                    activeFilter={filterReducer}
-                    changeFilter={changeFilter}
-                />
-            </div>
-        );
+            <Task
+                props={this.props}
+                state={this.state}
+                onClickFormLoginBtn={this.onClickFormLoginBtn}
+                onClickLoginBtn={this.onClickLoginBtn}
+                addTask={this.addTask}
+                saveEditTask={this.saveEditTask}
+                filterTasks={this.filterTasks}
+                handlerInputChange={this.handlerInputChange}
+                handlerEditMode={this.handlerEditMode}
+                changeAddTaskMode={this.changeAddTaskMode}
+                onPageChange={this.onPageChange}
+            />
+        )
     }
 }
 
@@ -177,4 +146,4 @@ export default connect((store) => ({
 }), {
     changeFilter, getTasksThunkCreator, addNewTaskThunkCreator,
     loginThunkCreator, saveEditTaskThunkCreator
-})(Task);
+})(TaskContainer);
