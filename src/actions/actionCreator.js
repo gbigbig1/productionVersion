@@ -43,7 +43,7 @@ export const errorData = (payload) => ({
 
 
 //redux-thunk
-export const getTasksThunkCreator = (PageNumber) => async (dispatch) => {
+export const getTasksThunkCreator = (PageNumber = 1) => async (dispatch) => {
     dispatch(setCurrentPage(PageNumber))
     const response = await taskApi.getTasks(PageNumber)
     response.status === 'ok'
@@ -51,16 +51,7 @@ export const getTasksThunkCreator = (PageNumber) => async (dispatch) => {
         : console.error(response.message)
 }
 
-export const getTasksLastPageThunkCreator = (PageNumber) => async (dispatch) => {
-    debugger
-    dispatch(setCurrentPage(PageNumber))
-    const response = await taskApi.getTasks(PageNumber)
-    response.status === 'ok'
-        ? dispatch(getTasks(response.message))
-        : console.error(response.message)
-}
-
-export const addNewTaskThunkCreator = (usernameInp, emailInp, textTaskInp, lastPageNumber) => async (dispatch) =>  {
+export const addNewTaskThunkCreator = (usernameInp, emailInp, textTaskInp) => async (dispatch) =>  {
     debugger
     let form = new FormData()
     form.append("username", usernameInp)
@@ -70,7 +61,7 @@ export const addNewTaskThunkCreator = (usernameInp, emailInp, textTaskInp, lastP
     const response = await taskApi.addNewTask(form)
 
     response.status === 'ok'
-        ? dispatch(getTasksLastPageThunkCreator(lastPageNumber))
+        ? dispatch(getTasksThunkCreator())
         : dispatch(errorData(response.message))
 }
 

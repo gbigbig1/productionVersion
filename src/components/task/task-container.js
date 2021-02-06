@@ -77,15 +77,11 @@ class TaskContainer extends Component {
 
     addTask = (event) => {
         event.preventDefault();
-        let lastPageNumber = (Math.floor(this.props.totalTaskCount / this.props.pageSize)) + 1
-        this.props.addNewTaskThunkCreator(this.state.usernameInp, this.state.emailInp, this.state.textTaskInp, lastPageNumber)
+        this.props.addNewTaskThunkCreator(this.state.usernameInp, this.state.emailInp, this.state.textTaskInp)
     }
 
     saveEditTask = (id) => {
-        this.props.saveEditTaskThunkCreator
-        (
-            id, this.state.textTaskInp, this.state.status, this.props.token, this.props.currentPage
-        ).then(alert('созаывап'))
+        this.props.saveEditTaskThunkCreator(id, this.state.textTaskInp, this.state.status, this.props.token, this.props.currentPage)
         this.initializeState()
     }
 
@@ -135,9 +131,8 @@ export default connect((store) => ({
     tasks: store.taskReducer.tasks,
     isAddNewTask: store.taskReducer.isAddNewTask,
     currentPage: store.taskReducer.currentPage,
-    pageSize: store.taskReducer.pageSize,
-    totalTaskCount: store.taskReducer.totalTaskCount,
     errorData: store.taskReducer.errorData,
+    totalTaskCount: store.taskReducer.totalTaskCount,
     filterReducer: store.filterReducer,
     isAuth: store.authReducer.isAuth,
     login: store.authReducer.login,

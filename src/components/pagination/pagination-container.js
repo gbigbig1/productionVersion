@@ -1,9 +1,10 @@
 import React, {useState} from "react";
+import {connect} from 'react-redux';
 
 import Pagination from "./pagination";
 
 
-const PaginationContainer = ({totalTaskCount, pageSize, currentPage, onPageChange, stepSizes = 10}) => {
+const PaginationContainer = ({ pageSize, totalTaskCount, currentPage, onPageChange, stepSizes = 10}) => {
     // подсчет общего количества страниц
     let pagesCount = Math.ceil(totalTaskCount / pageSize)
     let pages = []
@@ -13,11 +14,7 @@ const PaginationContainer = ({totalTaskCount, pageSize, currentPage, onPageChang
     //подсчет общего количество шагов по 10 страниц
     let stepCount = Math.ceil(pagesCount / stepSizes)
     let [stepNumber, setStepNumber] = useState(1)
-    debugger
-    // при изменение странице не пользователем
-    if (currentPage != 1) {
-        setStepNumber(Math.trunc(currentPage / 10)+1)
-    }
+
     let leftStepPageNumber = (stepNumber - 1) * stepSizes + 1
     let rightStepPageNumber = stepNumber * stepSizes
 
@@ -42,4 +39,9 @@ const PaginationContainer = ({totalTaskCount, pageSize, currentPage, onPageChang
 
 }
 
-export default PaginationContainer;
+export default connect(
+    (store) => ({
+        pageSize: store.taskReducer.pageSize,
+        totalTaskCount: store.taskReducer.totalTaskCount,
+    })
+)(PaginationContainer);

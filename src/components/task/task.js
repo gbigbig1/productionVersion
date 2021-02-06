@@ -10,8 +10,9 @@ import './task.css'
 const Task = ({
                   props, state, onClickFormLoginBtn, onClickLoginBtn, addTask, saveEditTask,
                   filterTasks, handlerInputChange, changeAddTaskMode, handlerEditMode, onPageChange
-              }) => {
-    const {tasks, totalTaskCount, pageSize, filterReducer, changeFilter, isAuth} = props;
+              }) =>
+    {
+    const {tasks, filterReducer, isAuth} = props;
     const isTasksExist = tasks && tasks.length > 0;
     const filteredTasks = filterTasks(tasks, filterReducer);
     return (
@@ -39,15 +40,13 @@ const Task = ({
             />}
 
             <PaginationContainer
-                totalTaskCount={totalTaskCount}
-                pageSize={pageSize}
                 currentPage={props.currentPage}
                 onPageChange={onPageChange}
             />
             <Footer
-                totalTaskCount={totalTaskCount}
+                totalTaskCount={props.totalTaskCount}
                 activeFilter={filterReducer}
-                changeFilter={changeFilter}
+                changeFilter={props.changeFilter}
             />
         </div>
     )
