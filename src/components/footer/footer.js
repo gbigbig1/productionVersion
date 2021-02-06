@@ -18,9 +18,9 @@ const FILTER_BTN = [
     },
 ]
 
-const Footer = ({amount, activeFilter, changeFilter}) => (
+const Footer = ({totalTaskCount, activeFilter, changeFilter}) => (
     <div className='footer'>
-        <span className='footer__amount__task'>{`Всего: ${amount} `}</span>
+        <span className='footer__amount__task'>{`Всего: ${totalTaskCount} `}</span>
         <div className='footer__filter'>
             {FILTER_BTN.map( ({id, text}) => (
                 <button
@@ -34,13 +34,13 @@ const Footer = ({amount, activeFilter, changeFilter}) => (
     </div>
 )
 Footer.propTypes = {
-    amount: PropTypes.number,
+    totalTaskCount: PropTypes.number,
     activeFilter: PropTypes.func,
     changeFilter: PropTypes.func,
 }
 
 Footer.defaultProp = {
-    amount: 0,
+    totalTaskCount: 0,
     activeFilter: () => {},
     changeFilter: () => {},
 }

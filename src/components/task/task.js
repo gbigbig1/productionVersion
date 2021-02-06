@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 
 import Login from "../login/login";
 import TaskList from '../task-list/task-list';
 import Footer from '../footer/footer';
-import Pagination from "../pagination/pagination";
+import PaginationContainer from "../pagination/pagination-container";
 
 import './task.css'
 
@@ -11,11 +11,9 @@ const Task = ({
                   props, state, onClickFormLoginBtn, onClickLoginBtn, addTask, saveEditTask,
                   filterTasks, handlerInputChange, changeAddTaskMode, handlerEditMode, onPageChange
               }) => {
-
     const {tasks, totalTaskCount, pageSize, filterReducer, changeFilter, isAuth} = props;
     const isTasksExist = tasks && tasks.length > 0;
     const filteredTasks = filterTasks(tasks, filterReducer);
-
     return (
         <div className='tasks__content'>
             <Login
@@ -40,20 +38,19 @@ const Task = ({
                 errorData={props.errorData}
             />}
 
-            <Pagination
+            <PaginationContainer
                 totalTaskCount={totalTaskCount}
                 pageSize={pageSize}
                 currentPage={props.currentPage}
                 onPageChange={onPageChange}
             />
             <Footer
-                amount={totalTaskCount}
+                totalTaskCount={totalTaskCount}
                 activeFilter={filterReducer}
                 changeFilter={changeFilter}
             />
         </div>
     )
-
 }
 
 export default Task;

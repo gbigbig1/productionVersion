@@ -10,13 +10,11 @@ const initialState = {
 const authReducer = (state = initialState, action ) => {
     switch (action.type) {
         case SET_USER_DATA:
-            debugger
             return {
                 ...state,
                 ...action,
             }
         case ERROR_LOGIN:
-            debugger
             return {
                 ...state,
                 errorLogin: action.payload.password,

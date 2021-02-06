@@ -1,7 +1,5 @@
-import {SET_CURRENT_PAGE, GET_TASKS, GET_SORT_TASKS, ERROR_DATA, CHANGE_ADD_TASK_MODE} from "../constants";
-//import { load } from 'redux-localstorage-simple';
+import {SET_CURRENT_PAGE, GET_TASKS, ERROR_DATA} from "../constants";
 
-//let TASKS = load({namespace: 'task-list'});
 
 const TASKS_start = {
     tasks:[
@@ -39,7 +37,6 @@ const TASKS_start = {
 }
 
 const taskReducer = (state = TASKS_start, action ) => {
-    debugger
     switch (action.type) {
         case SET_CURRENT_PAGE:
             return {

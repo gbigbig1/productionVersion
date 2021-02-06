@@ -38,7 +38,6 @@ class TaskContainer extends Component {
     }
 
     handlerEditMode = (id, username, email, text, status) => {
-        debugger
         let {isEditMode} = this.state
         this.setState({
             isEditMode: !isEditMode,
@@ -52,11 +51,10 @@ class TaskContainer extends Component {
 
 // обработчик на изменения значения в input всех
     handlerInputChange = ({target: {type, value, name, checked}}) => {
-        debugger
         this.setState({[name]: type === 'checkbox' ? checked : value})
     }
 
-// фильтуер задачи по активному фильтру
+// Фильтрация списка задач по активному фильтру
     filterTasks = (tasks, activeFilter) => {
         switch (activeFilter) {
             case 'completed':
@@ -84,7 +82,10 @@ class TaskContainer extends Component {
     }
 
     saveEditTask = (id) => {
-        this.props.saveEditTaskThunkCreator(id, this.state.textTaskInp, this.state.status, this.props.token, this.props.currentPage)
+        this.props.saveEditTaskThunkCreator
+        (
+            id, this.state.textTaskInp, this.state.status, this.props.token, this.props.currentPage
+        ).then(alert('созаывап'))
         this.initializeState()
     }
 
@@ -99,7 +100,6 @@ class TaskContainer extends Component {
 // обработчик нажатия кнопки "Войти"
     onClickFormLoginBtn = (event) => {
         event.preventDefault()
-        debugger
         this.props.loginThunkCreator(this.state.loginInput, this.state.pasInput)
     }
 
